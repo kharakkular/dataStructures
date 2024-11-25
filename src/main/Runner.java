@@ -10,7 +10,12 @@ public class Runner {
 		heap.insert(5);
 		heap.insert(7);
 		heap.insert(8);
-		heap.insert(6);
+		heap.insert(3);
+		heap.insert(11);
+		heap.printHeap();
+		
+		System.out.println("---------------------------");
+		heap.delete(8);
 		heap.printHeap();
 	}
 }

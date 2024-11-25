@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 public class Heap {
 	
 	private int[] heapData;
@@ -17,16 +19,65 @@ public class Heap {
 		heapify(data);
 	}
 	
-	public void heapify(int data) {
+	public void heapify(int value) {
 		int index = size - 1;
-		while(index > 0 && heapData[getParentIndex(index)] < data) {
+		while(index > 0 && heapData[getParentIndex(index)] < value) {
 			int parentIndex = getParentIndex(index);
 			int parentNum = heapData[parentIndex];
 			heapData[index] = parentNum;
 			index = getParentIndex(index);
 		}
 
-		heapData[index] = data;
+		heapData[index] = value;
+	}
+	
+	public void delete(int value) {
+		int index = findIndex(value);
+		if(index != Integer.MIN_VALUE) {
+			heapData[index] = heapData[size - 1];
+			heapData[--size] = 0;
+			
+			int parentIndex = getParentIndex(index);
+			value = heapData[index];
+			if(heapData[index] > heapData[parentIndex]) {
+				heapify(heapData[index]);
+			}
+			if(heapData[index] < findReplacer(value)) {
+				adjustLowerOrder(heapData[index]);
+			}
+		}
+		
+	}
+	
+	private void adjustLowerOrder(int value) {
+		int index = findIndex(value);
+		int replacer = findReplacer(value);
+		int[] originalArr = Arrays.copyOf(heapData, heapData.length);
+		while(index < size - 1 && value < replacer) {
+			originalArr[index] = replacer;
+			index = findIndex(replacer);
+			replacer = findReplacer(replacer);
+		}
+		heapData = originalArr;
+		heapData[index] = value;
+		
+	}
+	
+	private int findReplacer(int value) {
+		int index = findIndex(value);
+		int leftValue = ((index * 2) + 1) < heapData.length ? heapData[(index * 2) + 1] : 0;
+		int rightValue = ((index * 2) + 2) < heapData.length ? heapData[(index * 2) + 2] : 0;
+		return Math.max(leftValue, rightValue);
+	}
+	
+	private int findIndex(int value) {
+		int index = Integer.MIN_VALUE;
+		for(int i=0; i<size; i++) {
+			if(heapData[i] == value) {
+				return i;
+			}
+		}
+		return index;
 	}
 	
 	private int getParentIndex(int index) {
