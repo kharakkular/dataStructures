@@ -63,6 +63,10 @@ public class Heap {
 		
 	}
 	
+	public int[] getDataArray() {
+		return Arrays.copyOf(heapData, size);
+	}
+	
 	private int findReplacer(int value) {
 		int index = findIndex(value);
 		int leftValue = ((index * 2) + 1) < heapData.length ? heapData[(index * 2) + 1] : 0;
