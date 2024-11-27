@@ -42,7 +42,7 @@ public class Heap {
 			if(heapData[index] > heapData[parentIndex]) {
 				heapify(heapData[index]);
 			}
-			if(heapData[index] < findReplacer(value)) {
+			if(heapData[index] < heapData[findReplacerIndex(index)]) {
 				adjustLowerOrder(heapData[index]);
 			}
 		}
@@ -51,14 +51,22 @@ public class Heap {
 	
 	private void adjustLowerOrder(int value) {
 		int index = findIndex(value);
-		int replacer = findReplacer(value);
-		int[] originalArr = Arrays.copyOf(heapData, heapData.length);
-		while(index < size - 1 && value < replacer) {
-			originalArr[index] = replacer;
-			index = findIndex(replacer);
-			replacer = findReplacer(replacer);
+		int replacerIndex = findReplacerIndex(index);
+		int replacer = heapData[replacerIndex];
+//		int[] originalArr = Arrays.copyOf(heapData, heapData.length);
+		while(index < size - 1 && value < replacer && replacerIndex < size -1) {
+			
+//			originalArr[index] = replacer;
+//			index = findIndex(replacer);
+//			replacer = findReplacer(replacer);
+			heapData[index] = replacer;
+			index = replacerIndex;
+			replacerIndex = findReplacerIndex(replacerIndex);
+			if(replacerIndex < size - 1) {
+				replacer = heapData[replacerIndex];
+			}
 		}
-		heapData = originalArr;
+//		heapData = originalArr;
 		heapData[index] = value;
 		
 	}
@@ -67,11 +75,17 @@ public class Heap {
 		return Arrays.copyOf(heapData, size);
 	}
 	
-	private int findReplacer(int value) {
-		int index = findIndex(value);
-		int leftValue = ((index * 2) + 1) < heapData.length ? heapData[(index * 2) + 1] : 0;
-		int rightValue = ((index * 2) + 2) < heapData.length ? heapData[(index * 2) + 2] : 0;
-		return Math.max(leftValue, rightValue);
+	private int findReplacerIndex(int valueIndex) {
+//		int index = findIndex(value);
+		if(((valueIndex * 2) + 1) <= size -1){
+			if(((valueIndex * 2) + 2) <= size - 1) {
+				return heapData[(valueIndex * 2) + 1] > heapData[(valueIndex * 2) + 1] ? (valueIndex * 2) + 1 : (valueIndex * 2) + 2;
+			}
+			return (valueIndex * 2) + 1;
+		}
+//		int leftValue = ((index * 2) + 1) < heapData.length ? heapData[(index * 2) + 1] : 0;
+//		int rightValue = ((index * 2) + 2) < heapData.length ? heapData[(index * 2) + 2] : 0;
+		return Integer.MAX_VALUE;
 	}
 	
 	private int findIndex(int value) {

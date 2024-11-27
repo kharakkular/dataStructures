@@ -15,7 +15,7 @@ public class Runner {
 		heap.printHeap();
 		
 		System.out.println("---------------------------");
-		heap.delete(8);
+		heap.delete(7);
 		heap.printHeap();
 	}
 }
