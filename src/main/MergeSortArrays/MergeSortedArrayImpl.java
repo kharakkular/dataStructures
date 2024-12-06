@@ -1,4 +1,4 @@
-package MergeSortArrays;
+package main.MergeSortArrays;
 
 public class MergeSortedArrayImpl {
 

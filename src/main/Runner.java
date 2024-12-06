@@ -1,7 +1,7 @@
 package main;
 
-import MergeSortArrays.MergeSortedArrayImpl;
-import main.random.RemoveElement;
+// import main.MergeSortArrays.MergeSortedArrayImpl;
+import main.random.*;
 
 public class Runner {
 	public static void main(String[] args) {
@@ -29,14 +29,24 @@ public class Runner {
 			// int[] num1 = { 3,2,2,3 };
 			// int[] num1 = { 0,1,2,2,3,0,4,2 };
 
-			RemoveElement removeElement = new RemoveElement();
+			//RemoveElement removeElement = new RemoveElement();
 
-			int[] num1 = { 1 };
-
-			System.out.println(removeElement.removeElement(num1, 2));
+			int[] num1 = { 0,0,1 ,1,1,2,2,3,3,4 };
+			// int[] num1 = { 1, 1, 2 };
+			// int[] num1 = { 1, 1 };
+			//System.out.println(removeElement.removeElement(num1, 2));
 	
 		    // for(int i=0; i< num1.length; i++) {
 		    //     System.out.println(num1[i]);
 		    // }
+		 
+			// RemoveDuplicatesFromSortedArray duplicates = new RemoveDuplicatesFromSortedArray();
+			// duplicates.removeDuplicates(num1);
+
+			// Remove Duplicates from Array
+			RemoveDuplicatesFromSortedArray removeDuplicatesFromSortedArray = new RemoveDuplicatesFromSortedArray();
+			int remainingDuplicates = removeDuplicatesFromSortedArray.removeDuplicates(num1);
+			System.out.println(remainingDuplicates);
+
 	}
 }
