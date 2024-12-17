@@ -1,5 +1,7 @@
 package main;
 
+import java.util.HashMap;
+
 // import main.MergeSortArrays.MergeSortedArrayImpl;
 import main.random.*;
 
@@ -45,12 +47,23 @@ public class Runner {
 		// duplicates.removeDuplicates(num1);
 
 		// Remove Duplicates from Array
-		// RemoveDuplicatesFromSortedArray removeDuplicatesFromSortedArray = new RemoveDuplicatesFromSortedArray();
-		// int remainingDuplicates = removeDuplicatesFromSortedArray.removeDuplicates(num1);
+		// RemoveDuplicatesFromSortedArray removeDuplicatesFromSortedArray = new
+		// RemoveDuplicatesFromSortedArray();
+		// int remainingDuplicates =
+		// removeDuplicatesFromSortedArray.removeDuplicates(num1);
 		// System.out.println(remainingDuplicates);
 
 		// System.out.println(majorityElement(new int[] { 3,2,3}));
-		UtilityClass utilityClass = new UtilityClass();
-		System.out.println(utilityClass.majorityElement(new int[] { 2,2,1,1,1,2,2 }));
+		// UtilityClass utilityClass = new UtilityClass();
+		// System.out.println(utilityClass.majorityElement(new int[] { 2,2,1,1,1,2,2
+		// }));
+
+		// System.out.println(maxProfit(new int[] { 9,5,0,3,0,7,7,7,4,1,5,0,1,7 }));
+		// System.out.println(maxProfit(new int[] { 7,1,5,3,6,4 }));
+
+		// int num = 1 << 3;
+		// System.out.println(num);
+
+		// System.out.println(romanToInt("MMCDXXV"));
 	}
 }
