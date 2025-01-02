@@ -65,9 +65,6 @@ public class Runner {
 		// System.out.println(jump(arr));
 
 		// System.out.println(divide(10, 2));
-
-		int a = 5;
-		System.out.println(a << 4);
 	}
 
 	
